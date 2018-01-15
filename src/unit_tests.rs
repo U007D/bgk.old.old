@@ -44,5 +44,19 @@ fn tests() {
                 _ => TestCaseStatus::FAILED,
             }
         })),
+        TestCase::new("Game::roll()", "attempting to roll an illegal frame of 1 + 10 fails", Box::new(|_logger: &mut Logger| -> TestCaseStatus {
+            // GIVEN a Game instance
+            let mut game = Game::new();
+
+            // WHEN an illegal value is rolled
+            let result = game.roll(1)
+                             .roll(10);
+
+            // THEN
+            match result.score() {
+                Some(1) => TestCaseStatus::PASSED,
+                _ => TestCaseStatus::FAILED,
+            }
+        })),
     ]);
 }
