@@ -12,7 +12,10 @@ fn tests() {
             let result = game.roll(0);
 
             // THEN
-            assert_eq!(result.score() == 0);
+            match result.score() == 0 {
+                true => TestCaseStatus::PASSED,
+                false => TestCaseStatus::FAILED,
+            }
         })),
     ]);
 }
