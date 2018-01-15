@@ -4,12 +4,15 @@ use polish::{test_case::{TestRunner, TestCaseStatus, TestCase, TEST_RUNNER_ATTRI
 #[test]
 fn tests() {
     TestRunner::new().set_module_path(module_path!()).set_attributes(TEST_RUNNER_ATTRIBUTES.disable_final_stats | TEST_RUNNER_ATTRIBUTES.minimize_output).run_tests(vec![
-        TestCase::new("", "", Box::new(|_logger: &mut Logger| -> TestCaseStatus {
-            // GIVEN
+        TestCase::new("Game::roll()", "rolling a gutterball yields a score of 0", Box::new(|_logger: &mut Logger| -> TestCaseStatus {
+            // GIVEN a Game instance
+            let game = Game::new();
 
-            // WHEN
+            // WHEN a gutterball is rolled
+            let result = game.roll(0);
 
             // THEN
+            assert_eq!(result.score() == 0);
         })),
     ]);
 }
