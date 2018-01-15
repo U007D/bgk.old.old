@@ -12,9 +12,27 @@ fn tests() {
             let result = game.roll(0);
 
             // THEN
-            match result.score() == 0 {
-                true => TestCaseStatus::PASSED,
-                false => TestCaseStatus::FAILED,
+            match result {
+                Some(rolls) => {
+                    match rolls.score() {
+                        0 => TestCaseStatus::PASSED,
+                        _ => TestCaseStatus::FAILED,
+                    }
+                },
+                None => TestCaseStatus::FAILED,
+            }
+        })),
+        TestCase::new("Game::roll()", "attempting to roll an illegal value of 11 fails", Box::new(|_logger: &mut Logger| -> TestCaseStatus {
+            // GIVEN a Game instance
+            let game = Game::new();
+
+            // WHEN a gutterball is rolled
+            let result = game.roll(11);
+
+            // THEN
+            match result {
+                None => TestCaseStatus::PASSED,
+                Some(_) => TestCaseStatus::FAILED,
             }
         })),
     ]);
