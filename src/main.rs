@@ -5,25 +5,26 @@ extern crate polish;
 #[cfg(test)]
 mod unit_tests;
 
-struct Rolls;
-
-impl Rolls {
-    fn score(&self) -> u8 {
-        0
-    }
+struct Game {
+    rolls: Vec<u8>,
 }
-
-struct Game;
 
 impl Game {
     fn new() -> Self {
-        Game {}
+        Game { rolls: Vec::<u8>::new() }
     }
 
-    fn roll(&self, roll: u8) -> Option<Rolls> {
-        match roll <= 10 {
-            true => Some(Rolls {}),
-            false => None,
+    fn roll(&mut self, roll: u8) -> &mut Self {
+        if roll <= 10 {
+            self.rolls.push(roll);
+        }
+        self
+    }
+
+    fn score(&self) -> Option<u8> {
+        match self.rolls.len() {
+            0 => None,
+            _ => Some(self.rolls.iter().sum())
         }
     }
 }
