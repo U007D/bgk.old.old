@@ -1,0 +1,8 @@
+[package]
+authors = ["Brad Gibson <brad@humanenginuity.com>"]
+name = "bgk"
+version = "0.1.0"
+
+[dependencies]
+failure = "*"
+polish = "*"
