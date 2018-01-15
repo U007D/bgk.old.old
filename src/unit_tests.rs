@@ -35,5 +35,19 @@ fn tests() {
                 Some(_) => TestCaseStatus::FAILED,
             }
         })),
+        TestCase::new("Game::roll()", "rolling a 1 followed by a 1 yields a score of 2", Box::new(|_logger: &mut Logger| -> TestCaseStatus {
+            // GIVEN a Game instance
+            let game = Game::new();
+
+            // WHEN a gutterball is rolled
+            let result = game.roll(1)
+                             .roll(1);
+
+            // THEN
+            match result.score() {
+                Some(2) => TestCaseStatus::PASSED,
+                _ => TestCaseStatus::FAILED,
+            }
+        })),
     ]);
 }
