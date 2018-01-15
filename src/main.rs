@@ -12,6 +12,7 @@ impl Rolls {
         0
     }
 }
+
 struct Game;
 
 impl Game {
@@ -19,8 +20,11 @@ impl Game {
         Game {}
     }
 
-    fn roll(&self, _: u8) -> Rolls {
-        Rolls {}
+    fn roll(&self, roll: u8) -> Option<Rolls> {
+        match roll <= 10 {
+            true => Some(Rolls {}),
+            false => None,
+        }
     }
 }
 
