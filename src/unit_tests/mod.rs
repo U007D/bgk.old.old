@@ -29,7 +29,18 @@ fn score_tests() {
             ctx.then("the score should be 0", |env| {
                assert!(env.game.score() == env.expected_result);
             });
-        })
+        });
+
+        ctx.when("a pin is hit", |ctx| {
+            ctx.before(|env| {
+                env.game.roll(1);
+                env.expected_result = 1;
+            });
+
+            ctx.then("the score should be 1", |env| {
+                assert!(env.game.score() == env.expected_result);
+            });
+        });
     }));
 }
 
