@@ -2,6 +2,7 @@ extern crate hesl;
 
 use rspec::{given, run};
 use di::Container;
+use Game;
 
 #[test]
 fn tests() {
