@@ -20,7 +20,7 @@ fn score_tests() {
             assert!(env.game.score() == env.expected_result);
         });
 
-        ctx.when("a gutterball is rolled", |ctx| {
+        ctx.when("a gutter ball is rolled", |ctx| {
             ctx.before(|env| {
                 env.game.roll(0);
                 env.expected_result = 0;

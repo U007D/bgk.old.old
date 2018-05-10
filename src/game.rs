@@ -10,11 +10,12 @@ impl Game {
         }
     }
 
-    pub fn roll(&self, val: u8) -> &Self {
+    pub fn roll(&mut self, val: u8) -> &Self {
+        self.score = u16::from(val);
         self
     }
 
     pub fn score(&self) -> u16 {
-        0
+        self.score
     }
 }
