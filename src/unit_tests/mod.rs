@@ -1,31 +1,35 @@
 extern crate hesl;
 
 use rspec::{given, run};
-use di::Container;
 use Game;
 
+#[derive(Clone, Default, Debug)]
+struct Environment {
+    game: Game,
+    expected_result: u16,
+}
+
 #[test]
-fn tests() {
-    run(&given("a game", (), |ctx| {
-        let sut = Game::new();
-        let expected_result = 0;
-
-        ctx.then("the score should be 0", |_| {
-            assert!(sut.score() == expected_result);
+fn score_tests() {
+    run(&given("a fresh game", Environment::default(), |ctx| {
+        ctx.before(|env| {
+            *env = Environment::default();
         });
-    }));
 
-    run(&given("a game where one gutterball has been rolled", (), |ctx| {
-        let sut = Game::new();
-        let expected_result = 0;
+        ctx.then("the score should be 0", |env| {
+            assert!(env.game.score() == env.expected_result);
+        });
 
-        ctx.when("the score is queried", |ctx| {
-            let result = sut.score();
-
-            ctx.then("", move |_| {
-                assert!(result == expected_result);
+        ctx.when("a gutterball is rolled", |ctx| {
+            ctx.before(|env| {
+                env.game.roll(0);
+                env.expected_result = 0;
             });
-        });
+
+            ctx.then("the score should be 0", |env| {
+               assert!(env.game.score() == env.expected_result);
+            });
+        })
     }));
 }
 

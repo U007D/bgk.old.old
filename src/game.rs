@@ -1,3 +1,4 @@
+#[derive(Clone, Debug, Default, PartialEq, PartialOrd)]
 pub struct Game {
     score: u16,
 }
