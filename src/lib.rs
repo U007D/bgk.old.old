@@ -34,6 +34,8 @@ mod consts;
 mod di;
 mod error;
 mod game;
+mod score_keeper_error;
+mod ten_pin_error;
 #[cfg(test)]
 mod unit_tests;
 

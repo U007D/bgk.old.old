@@ -1,5 +1,6 @@
 use super::*;
 
+
 #[derive(Clone, Default, Debug)]
 struct Environment {
     game: Game,
