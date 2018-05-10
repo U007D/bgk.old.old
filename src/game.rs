@@ -10,6 +10,10 @@ impl Game {
         }
     }
 
+    pub fn roll(&self, val: u8) -> &Self {
+        self
+    }
+
     pub fn score(&self) -> u16 {
         0
     }
