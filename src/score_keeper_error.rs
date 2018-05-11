@@ -1,3 +1,3 @@
 use failure::Fail;
 
-pub trait ScoreKeeperError : Fail + Sized {}
+pub trait ScoreKeeperError : Fail + Clone + PartialEq + PartialOrd {}

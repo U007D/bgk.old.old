@@ -24,7 +24,7 @@ impl From<OsString> for Error {
     }
 }
 
-impl<E> From<E> for Error where E: ScoreKeeperError {
+impl<E: ScoreKeeperError> From<E> for Error {
     fn from(err: E) -> Self {
         Error::ScoreKeeper(Box::new(err))
     }
