@@ -6,7 +6,7 @@ use std::{ffi::OsString, fmt};
 #[derive(Clone, Debug, Fail, PartialEq, PartialOrd)]
 pub enum Error {
     InvalidUtf8Arg(OsString),
-    ScoreKeeper(ScoreKeeperError),
+    ScoreKeeper(Box<ScoreKeeperError>),
 }
 
 impl fmt::Display for Error {
@@ -24,8 +24,8 @@ impl From<OsString> for Error {
     }
 }
 
-impl<E> From<E> for Error where E: ScoreKeeperError + Sized {
+impl<E> From<E> for Error where E: ScoreKeeperError {
     fn from(err: E) -> Self {
-        Error::ScoreKeeper(err)
+        Error::ScoreKeeper(Box::new(err))
     }
 }
