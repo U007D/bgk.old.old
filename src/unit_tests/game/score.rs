@@ -1,4 +1,5 @@
 use super::*;
+use game::Game;
 
 #[derive(Clone, Default, Debug)]
 struct Env {

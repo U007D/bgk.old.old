@@ -33,6 +33,7 @@ extern crate hesl;
 mod consts;
 mod di;
 mod error;
+mod game;
 #[cfg(test)]
 mod unit_tests;
 
