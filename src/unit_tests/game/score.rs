@@ -1,4 +1,5 @@
-use super::*;
+use game::Game;
+use rspec::{run, given};
 
 #[derive(Clone, Default, Debug)]
 struct Env {
@@ -17,7 +18,7 @@ impl Env {
 fn tests() {
     run(&given("a newly-initialized Game", Env::new(), |ctx| {
         let expected_result = 0_u16;
-        ctx.then("the score should be 0", |env| {
+        ctx.then("the score should be 0", move |env| {
             assert!(env.game.score() == expected_result);
         });
     }));
