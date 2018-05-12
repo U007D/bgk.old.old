@@ -26,6 +26,17 @@ fn tests() {
                 assert!(env.game.score() == expected_result);
             });
         });
+
+        ctx.when("1 pin is hit", |ctx| {
+            ctx.before(|env| {
+                env.game.roll(RollAmt::new(1).unwrap());
+            });
+            let expected_result = 1;
+
+            ctx.then("score should be 1", move |env| {
+                assert!(env.game.score() == expected_result);
+            });
+        });
     }));
 }
 
