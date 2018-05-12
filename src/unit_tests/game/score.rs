@@ -15,12 +15,16 @@ fn tests() {
             assert!(env.game.score() == expected_result);
         });
 
-//        ctx.when("", |ctx| {
-//            ctx.before(|env| {});
-//
-//            ctx.then("", |env| {
-//            });
-//        });
+        ctx.when("a gutter ball is rolled", |ctx| {
+            ctx.before(|env| {
+                env.game.roll(0);
+            });
+            let expected_result = 0;
+
+            ctx.then("score should be 0", |env| {
+                assert!(env.game.score() == expected_result);
+            });
+        });
     }));
 }
 
