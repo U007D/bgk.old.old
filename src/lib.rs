@@ -36,6 +36,7 @@ mod di;
 mod error;
 mod game;
 mod roll_amt;
+mod score;
 #[cfg(test)]
 mod unit_tests;
 

@@ -4,13 +4,14 @@ mod unit_tests;
 
 use num::cast::ToPrimitive;
 pub use self::error::Error;
-use super::*;
+
+type Result<T> = ::std::result::Result<T, Error>;
 
 #[derive(Clone, Copy, Debug, Default, PartialEq, PartialOrd)]
 pub struct RollAmt(u8);
 
 impl RollAmt {
-    pub fn new<T: ToPrimitive + Copy>(val: T) -> ::std::result::Result<Self, Error> {
+    pub fn new<T: ToPrimitive + Copy>(val: T) -> Result<Self> {
         #[allow(absurd_extreme_comparisons)]    // retain v >= 0 to protect against changes to signed types
         #[allow(unused_comparisons)]            // retain v >= 0 to protect against changes to signed types
         match val.to_u8() {
