@@ -23,6 +23,7 @@
 
 #[macro_use]
 extern crate failure;
+extern crate num;
 #[cfg(test)]
 extern crate rspec;
 
@@ -34,6 +35,7 @@ mod consts;
 mod di;
 mod error;
 mod game;
+mod roll_amt;
 #[cfg(test)]
 mod unit_tests;
 
