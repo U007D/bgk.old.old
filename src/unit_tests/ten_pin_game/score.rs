@@ -1,15 +1,16 @@
 use game::Game;
+use ten_pin_game::TenPinGame;
 use rspec::{run, given};
 
 #[derive(Clone, Default, Debug)]
 struct Env {
-    game: Game,
+    game: TenPinGame,
 }
 
 impl Env {
     fn new() -> Self {
         Self {
-            game: Game::new(),
+            game: TenPinGame::new(),
         }
     }
 }

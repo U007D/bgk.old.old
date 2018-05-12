@@ -1,12 +1,11 @@
-#[derive(Clone, Default, Debug)]
-pub struct Game {}
+use num_traits::Num;
 
-impl Game {
-    pub fn new() -> Self {
-        Self {}
+pub trait Game : Default {
+    type Score: Num;
+
+    fn new() -> Self {
+        Self::default()
     }
 
-    pub fn score(&self) -> u16 {
-        0
-    }
+    fn score(&self) -> Self::Score;
 }

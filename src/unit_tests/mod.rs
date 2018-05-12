@@ -1,3 +1,3 @@
 extern crate hesl;
 
-mod game;
+mod ten_pin_game;
