@@ -19,9 +19,9 @@
 #![forbid(overflowing_literals, unused_must_use)]
 // End of safety-critical lint section
 
-extern crate qst;
+extern crate bgk_2018_03;
 
-use qst::Result;
+use bgk_2018_03::Result;
 
 fn args() -> Result<Vec<String>> {
     Ok(std::env::args_os()

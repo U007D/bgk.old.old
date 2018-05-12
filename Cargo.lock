@@ -343,7 +343,7 @@ dependencies = [
 ]
 
 [[package]]
-name = "qst"
+name = "bgk_2018_03"
 version = "0.1.0"
 dependencies = [
  "clippy 0.0.196 (registry+https://github.com/rust-lang/crates.io-index)",
