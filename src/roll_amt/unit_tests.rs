@@ -1,3 +1,4 @@
+#![allow(result_unwrap_used)]
 use roll_amt::{Error as RollAmountError, RollAmt};
 use rspec::{given, run};
 
@@ -18,8 +19,12 @@ fn tests() {
     run(&given("an initialized RollAmt", Env::new(), |ctx| {
         let expected_result = Ok(RollAmt(0_u8));
 
-        ctx.then("the default-initialized RollAmt should be 0", move |env| {
+        ctx.then("the default constructed RollAmt should be 0", move |env| {
             assert!(env.roll_amt_result == expected_result);
+        });
+
+        ctx.then("and RollAmt::as_u8 should also be 0_u8", |env| {
+            assert!(env.roll_amt_result.clone().unwrap().0 == env.roll_amt_result.clone().unwrap().as_u8());
         });
 
         ctx.when("initialized to 1_u8", |ctx| {
@@ -30,6 +35,10 @@ fn tests() {
 
             ctx.then("the RollAmt should be 1_u8", move |env| {
                 assert!(env.roll_amt_result == expected_result);
+            });
+
+            ctx.then("and RollAmt::as_u8 should also be 1_u8", |env| {
+                assert!(env.roll_amt_result.clone().unwrap().0 == env.roll_amt_result.clone().unwrap().as_u8());
             });
         });
 
@@ -63,6 +72,10 @@ fn tests() {
 
             ctx.then("the RollAmt should be 10_u8", move |env| {
                 assert!(env.roll_amt_result == expected_result);
+            });
+
+            ctx.then("and RollAmt::as_u8 should also be 10_u8", |env| {
+                assert!(env.roll_amt_result.clone().unwrap().0 == env.roll_amt_result.clone().unwrap().as_u8());
             });
         });
 

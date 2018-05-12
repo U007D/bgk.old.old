@@ -18,4 +18,8 @@ impl RollAmt {
             _ => Err(Error::InvalidRollAmt(val.to_u64()))
         }
     }
+
+    pub fn as_u8(&self) -> u8 {
+        self.0
+    }
 }
