@@ -6,9 +6,7 @@ pub struct TenPinGame {}
 impl Game for TenPinGame {
     type Score = u16;
 
-    //pub fn rolls(&self, pins: &[PinList]) {}
-
-    fn score(&self) -> Self::Score {
+    fn score(&self, rolls: &[PinList]) -> Self::Score {
         0
     }
 }

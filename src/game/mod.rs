@@ -1,3 +1,6 @@
+mod error;
+
+pub use Error;
 use num_traits::Num;
 
 pub trait Game : Default {
@@ -7,5 +10,5 @@ pub trait Game : Default {
         Self::default()
     }
 
-    fn score(&self) -> Self::Score;
+    fn score(&self, rolls: &[PinList]) -> Self::Score;
 }
